@@ -655,8 +655,8 @@ public class FlexibleAdapter<T extends IFlexible>
 	 *
 	 * @return ViewGroup layout that will hold the sticky headers ItemViews
 	 */
-	public ViewGroup getStickySectionHeadersHolder() {
-		return (ViewGroup) ((Activity) mRecyclerView.getContext()).findViewById(R.id.sticky_header_container);
+	public ViewGroup getStickySectionHeadersHolder(RecyclerView recyclerView) {
+		return (ViewGroup) ((Activity) recyclerView.getContext()).findViewById(R.id.sticky_header_container);
 	}
 
 	/**

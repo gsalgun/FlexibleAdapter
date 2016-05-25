@@ -76,7 +76,7 @@ public class StickyHeaderHelper extends OnScrollListener {
 			mRecyclerView.post(new Runnable() {
 				@Override
 				public void run() {
-					initStickyHeadersHolder();
+					initStickyHeadersHolder(mRecyclerView);
 				}
 			});
 		}
@@ -95,9 +95,12 @@ public class StickyHeaderHelper extends OnScrollListener {
 		return vh != null && (vh.itemView.getX() < 0 || vh.itemView.getY() < 0);
 	}
 
-	private void initStickyHeadersHolder() {
+	private void initStickyHeadersHolder(RecyclerView recyclerView) {
 		//Initialize Holder Layout and show sticky header if exists already
-		mStickyHolderLayout = mAdapter.getStickySectionHeadersHolder();
+		if(recyclerView==null){
+			return;
+		}
+		mStickyHolderLayout = mAdapter.getStickySectionHeadersHolder(recyclerView);
 		if (mStickyHolderLayout != null) {
 			if (mStickyHolderLayout.getLayoutParams() == null) {
 				mStickyHolderLayout.setLayoutParams(getDefaultLayoutParams());
